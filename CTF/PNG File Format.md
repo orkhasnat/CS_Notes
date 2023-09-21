@@ -37,6 +37,8 @@ The `IHDR` chunk shall be the first chunk in the PNG datastream. It contains:
 |Compression method|1 byte|
 |Filter method|1 byte|
 |Interlace method|1 byte|
+|**Total**|***13 byte***|
+
 Width and height give the image dimensions in pixels. They are PNG four-byte unsigned integers. Zero is an invalid value.
 Bit depth is a single-byte integer giving the number of bits per sample or per palette index (not per pixel). Valid values are 1, 2, 4, 8, and 16, although not all values are allowed for all color types.
 Color type is a single-byte integer that defines the PNG image type. Valid values are 0, 2, 3, 4, and 6.
