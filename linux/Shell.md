@@ -17,3 +17,12 @@ To clear the environment variables temporarily and run some command use the foll
 ```bash
 env -i COMMAND ARGS
 ```
+
+# `xargs` trick to convert space into `\n` 
+`xargs -n 1` is a nice trick to convert space delimited one line to newline delimited lines.
+```bash
+echo "1 2 3" | xargs -n 1
+->> 1
+	2
+	3
+```
