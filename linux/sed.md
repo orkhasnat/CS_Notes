@@ -1,3 +1,6 @@
+😭😭 when using sed, PLEASE USE -E/-r (extended regex) or all hell breaks loose because of BRE 😭😭
+---
+
 # Using different delimiters in sed
 What if, in sed, you have lots of slashes in the pattern and/or replacement?
 One solution is to escape them all (the so-called tooth-saw effect):
@@ -23,4 +26,21 @@ sed '/\/a\/b\/c\//{do something;}'**
 sed '\#/a/b/c/#{do something;}'
 sed '\_/a/b/c/_{do something;}'
 sed '\%/a/b/c/%{do something;}'**
+```
+
+# Using & as the matched string
+
+Sometimes you want to search for a pattern and add some characters, like parenthesis, around or near the pattern you found. It is easy to do this if you are looking for a particular string:
+```bash
+sed 's/abc/(abc)/' <old >new
+```
+This won't work if you don't know exactly what you will find. How can you put the string you found in the replacement string if you don't know what it is?
+The solution requires the special character `&`. It corresponds to the pattern found.
+```bash
+sed 's/[a-z]*/(&)/' <old >new
+```
+You can have any number of `&` in the replacement string. You could also double a pattern, e.g. the first number of a line:
+```bash
+echo "123 abc" | sed 's/[0-9]*/& &/'
+->> 123 123 abc
 ```
