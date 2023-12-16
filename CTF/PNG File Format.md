@@ -48,4 +48,4 @@ Bit depth restrictions for each color type are imposed to simplify implementatio
 The `IDAT` chunk contains the actual image data which is the output stream of the compression algorithm.
 
 ### `IEND` Header
-The `IEND` chunk marks the end of the PNG data stream. The chunk's data field is empty.
+The `IEND` chunk marks the end of the PNG data stream. The chunk's data field is empty. Its  always `0000 0000 4945 4e44 ae42 6082` in hex. The 8 zeros as there is no data field, next `IEND` chunk name and last 4 bytes is the checksum. This will always be same.
