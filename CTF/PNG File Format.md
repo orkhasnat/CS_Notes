@@ -2,6 +2,7 @@ Source: [PNG Specification](https://www.w3.org/TR/2003/REC-PNG-20031110)
 
 ![[../Resources/Saved Pages/Portable Network Graphics (PNG) Specification (Second Edition).pdf|Portable Network Graphics (PNG) Specification (Second Edition)]]
 
+---
 PNG (portable network graphics) have 4 channels - Red, Green, Blue and Alpha.
 PNG file signature is `137 80 78 71 13 10 26 10` in **decimal** or ``89 50 4e 47 0d 0a 1a 0a`` in **hex**.
 
