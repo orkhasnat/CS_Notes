@@ -1,8 +1,10 @@
 {
   "accentColor": "",
-  "cssTheme": "Obsidian Nord",
+  "cssTheme": "Sanctum",
   "baseFontSize": 16,
   "enabledCssSnippets": [
-    "hyphenation-and-justification"
-  ]
+    "hyphenation-and-justification",
+    "title-color"
+  ],
+  "theme": "obsidian"
 }
