@@ -124,4 +124,50 @@ printer = star(percent(printer))
 ```
 
 ### Built-In Decorators 
+###### `@classmethod` decorator
+- Is used to define class methods in a class.
+- Class methods take a reference to the class itself as their first parameter, conventionally named `cls`.
+- **Similar to the `static` keyword in C++.**
+```python
+class MyClass:
+    x = 10
+    
+    @classmethod
+    def print_private_var(cls):
+        print(cls.x)
+        
+MyClass.print_private_var()
+```
+###### `@property` decorator
+- The `@property` decorator is used to define **getter methods** in a class.
+- It allows us to access a method like an attribute without calling it explicitly.
+- In addition to `@property`, we can use the `@property_name.setter` decorator to define a **setter method**.
+```python
+class Geek: 
+	def __init__(self): 
+		self._name = 0
 
+	@property
+	def name(self): 
+	print("Getter Called") 
+	return self._name 
+
+	@name.setter 
+	def name(self, name): 
+	print("Setter called") 
+	self._name = name 
+
+p = Geek() 
+p.name = 10
+print(p.name)
+```
+```
+Output:
+Setter called 
+Getter Called
+10
+```
+###### `@cache` decorator from `functools`
+Basically `@lru_cache(maxsize=None)` which is also the default for `@lru_cache`.
+###### `@lru_cache` decorator from `functools`
+See [[Functools Module in Python#`@lru_cache` decorator|here]].
