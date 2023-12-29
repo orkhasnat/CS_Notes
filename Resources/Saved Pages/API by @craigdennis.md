@@ -167,8 +167,76 @@ In this unit, we'll build a single page application that makes use of a client s
 
 ### Video 1 - Introducing the project
 
+> [!example]- 👩‍💻 The code
+> ```html
+> <!DOCTYPE html>
+> <html lang="en">
+>   <head>
+>     <meta charset="UTF-8" />
+>     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+>     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+>     <link
+>       rel="stylesheet"
+>       href="https://fonts.googleapis.com/css?family=Open+Sans"
+>     />
+>     <style>
+>       body {
+>         font-family: "Open Sans", sans-serif;
+>         margin: 5%;
+>       }
+>     </style>
+>     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.13"></script>
+>     <script src="https://unpkg.com/vue-silentbox@2.3.1/dist/vue-silentbox.min.js"></script>
+>     <title>Pick.le: Pick your pics 🥒</title>
+>   </head>
+>   <body>
+>     <div id="app">
+>       <h1>Pick.le: Pick your pics 🥒</h1>
+>       <h2>{{ callToAction }}</h2>
+>       <silent-box :gallery="gallery"></silent-box>
+>     </div>
+> 
+>     <script>
+>       Vue.use(VueSilentbox.default);
+>       const app = new Vue({
+>         el: "#app",
+>         data() {
+>           return {
+>             callToAction: "Submit your photos of kittehs!",
+>             gallery: [],
+>           };
+>         },
+>         methods: {
+>           async loadImages() {
+>             // TODO: Use the Messaging API to use submitted photos
+>             // const response = await fetch("/api/")
+>             // TODO: Create a web-based API that matches this expected response
+>             this.gallery = [
+>               {
+>                 src: "https://placekitten.com/200/300",
+>                 description: "Look at this kitteh",
+>                 alt: "A kitteh",
+>                 thumbnailWidth: "200px",
+>               },
+>               {
+>                 src: "https://placekitten.com/300/300",
+>                 description: "Another Kitteh",
+>                 alt: "Cutie",
+>                 thumbnailWidth: "200px",
+>               },
+>             ];
+>           },
+>         },
+>         mounted() {
+>           this.loadImages();
+>         },
+>       });
+>     </script>
+>   </body>
+> </html>
+> ```
+
 - 🍿 [What do tutorials mean when they say my shell? - Developer Fundamentals - YouTube](https://youtu.be/fhv2dX0axeY?utm_campaign=youtube-dev-acq-to--int&utm_source=youtube&utm_medium=dev&utm_content=fcc-api&utm_term=twiliodevs)
-- 👩‍💻 [The code (index.html)](./code/3-all-together-now/1-introducing-the-project/index.html)
 - [Vue.js - Front-end JavaScript Framework](https://vuejs.org)
 - [Vue SilentBox Plugin](https://github.com/silencesys/silentbox)
 
@@ -180,21 +248,128 @@ start .\index.html
 ```
 
 ### Video 2 - Serverless
+> [!example]- 👩‍💻 The code (/incoming-message)
+>```js
+> // This is your new function. To start, set the name and path on the left.
+> 
+> exports.handler = function (context, event, callback) {
+>   console.log(`Incoming message: ${event.Body}`);
+>   // Here's an example of setting up some TWiML to respond to with this function
+>   const twiml = new Twilio.twiml.MessagingResponse();
+>   twiml.message("Thanks for your submission! 📸");
+>   console.log(`TwiML was ${twiml}`);
+>   // This callback is what is returned in response to this function being invoked.
+>   // It's really important! E.g. you might respond with TWiML here for a voice or SMS response.
+>   // Or you might return JSON data to a studio flow. Don't forget it!
+>   return callback(null, twiml);
+> };
+>```
 
-- 👩‍💻 [The code (/incoming-message)](code/3-all-together-now/2-serverless/incoming-message.js)
 - [Serverless Computing - Wikipedia](https://en.wikipedia.org/wiki/Serverless_computing)
 - [Serverless on Twilio](https://www.twilio.com/en-us/serverless?utm_campaign=youtube-dev-acq-to--int&utm_source=youtube&utm_medium=dev&utm_content=fcc-api&utm_term=twiliodevs)
 - 🍿 [Understanding Webhooks - freeCodeCamp - YouTube](https://youtu.be/41NOoEz3Tzc)
 
 ### Video 3 - Writing a Server Side API
 
-- 👩‍💻 [The code (/api/pics)](code/3-all-together-now/3-writing-a-server-side-api/api/pics.js)
+>[!example]- 👩‍💻 The code (/api/pics)
+> ```js
+> exports.handler = async function (context, event, callback) {
+>   const client = context.getTwilioClient();
+>   const gallery = [];
+>   
+>   /* This is the format we need to match. Here for reference
+>     [
+>       {
+>         src: "https://placekitten.com/200/300",
+>         description: "Look at this kitteh",
+>         alt: "A kitteh",
+>         thumbnailWidth: "200px",
+>       },
+>     ];
+>   */
+>   const messages = await client.messages.list({ to: context.TWILIO_NUMBER });
+>   for (const message of messages) {
+>     // You can have multiple medias on each message
+>     const pics = await message.media().list();
+>     for (const pic of pics) {
+>       // Add to the gallery array, use the outer loop's message value to put the same body
+>       // for each pic
+>       gallery.push({
+>         src: "https://api.twilio.com" + pic.uri.replace(".json", ""),
+>         description: message.body,
+>         alt: message.body,
+>         thumbnailWidth: "200px",
+>       });
+>     }
+>   }
+>   // Twilio Function will automatically turn gallery into proper JSON and set the 
+>   // header to `application\json`
+>   return callback(null, gallery);
+> };
+>```
 - 🤷 [Example NSFW Detection API](https://smartclick.ai/api/nsfw-detection/)
 - [Everything You Need To Know About API Rate Limiting - Nordic APIs](https://nordicapis.com/everything-you-need-to-know-about-api-rate-limiting/)
 
 ### Video 4 - Fetching Results on the Client from our Server
 
-- 👩‍💻 [The updated code (index.html)](./code/3-all-together-now/4-fetching-results-on-the-client/index.html)
+>[!example]- 👩‍💻 The updated code (index.html)
+> ```html
+> <!DOCTYPE html>
+> <html lang="en">
+>   <head>
+>     <meta charset="UTF-8" />
+>     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+>     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+>     <link
+>       rel="stylesheet"
+>       href="https://fonts.googleapis.com/css?family=Open+Sans"
+>     />
+>     <style>
+>       body {
+>         font-family: "Open Sans", sans-serif;
+>         margin: 5%;
+>       }
+>     </style>
+>     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.13"></script>
+>     <script src="https://unpkg.com/vue-silentbox@2.3.1/dist/vue-silentbox.min.js"></script>
+>     <title>Pick.le: Pick your pics 🥒</title>
+>   </head>
+>   <body>
+>     <div id="app">
+>       <h1>Pick.le: Pick your pics 🥒</h1>
+>       <h2>{{ callToAction }}</h2>
+>       <silent-box :gallery="gallery"></silent-box>
+>     </div>
+> 
+>     <script>
+>       Vue.use(VueSilentbox.default);
+>       const app = new Vue({
+>         el: "#app",
+>         data() {
+>           return {
+>             callToAction: "Submit your photos of burritos!",
+>             gallery: [],
+>           };
+>         },
+>         methods: {
+>           async loadImages() {
+>             // Our API is on the same server so we don't need to specify the host
+>             // NOTE: fetch is asynchronous and returns a `Promise`, so we'll `await`
+>             const response = await fetch("/api/pics");
+>             // NOTE: The `json` method on the response object is also asynchronous
+>             // Setting the gallery object automatically causes the API to refresh because
+>             // we bound it to the plugin as part of the `data` API of Vue.
+>             this.gallery = await response.json();
+>           },
+>         },
+>         mounted() {
+>           this.loadImages();
+>         },
+>       });
+>     </script>
+>   </body>
+> </html>
+> ```
 - 📚 [fetch API - mdn](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
 - 🏅 [REST Architectural Constraints - Scavenger Hunt PRIZE!](https://en.wikipedia.org/wiki/Representational_state_transfer#Architectural_constraints)
 - 🍿 [Learn Twilio Messaging, Voice, and Serverless (Full Course!)](https://youtu.be/4jUMqutYmyE?utm_campaign=youtube-dev-acq-to--int&utm_source=youtube&utm_medium=dev&utm_content=fcc-api&utm_term=twiliodevs)
