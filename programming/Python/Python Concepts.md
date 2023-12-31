@@ -78,3 +78,13 @@ dict2 = {'city': 'New York'}
 combined_dict = {**dict1, **dict2}
 #Output: {'name': 'John', 'age': 25, 'city': 'New York'} 
 ```
+
+### Public, Private Variables
+In Python, the concepts of private, public, and protected variables are not enforced through strict access modifiers like in some other programming languages. However, there are conventions and naming conventions that developers follow to indicate the intended visibility of variables.
+Specially private variables go through **"name-mangling"** i.e. adding a prefix to the variable name at compile-time by the python interpreter.
+
+|Visibility|Convention|Example|Accessibility `obj=Myclass()` |
+|---|---|---|---|
+|Public|None|`self.public = 10` |`obj.public` |
+|Protected|Single leading underscore (`_`)|`self._protected = 20` |`obj._protected` |
+|Private|Double leading underscore (`__`) |`self.__private = 30` |`obj._Myclass__private` |
