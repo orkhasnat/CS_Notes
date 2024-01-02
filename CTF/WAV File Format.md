@@ -1,6 +1,6 @@
 Source: [WaveFormat](http://soundfile.sapp.org/doc/WaveFormat/)
 
-![[../Resources/Saved Pages/Microsoft WAVE soundfile format.pdf|Microsoft WAVE soundfile format]]
+![[../Resources/PDFs/Microsoft WAVE soundfile format.pdf|Microsoft WAVE soundfile format]]
 
 ---
 # WAV File Format

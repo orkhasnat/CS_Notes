@@ -1,6 +1,6 @@
 Source: [PNG Specification](https://www.w3.org/TR/2003/REC-PNG-20031110)
 
-![[../Resources/Saved Pages/Portable Network Graphics (PNG) Specification (Second Edition).pdf|Portable Network Graphics (PNG) Specification (Second Edition)]]
+![[../Resources/PDFs/Portable Network Graphics (PNG) Specification (Second Edition).pdf|Portable Network Graphics (PNG) Specification (Second Edition)]]
 
 ---
 PNG (portable network graphics) have 4 channels - Red, Green, Blue and Alpha.
