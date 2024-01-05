@@ -3,8 +3,7 @@
   "cssTheme": "Sanctum",
   "baseFontSize": 16,
   "enabledCssSnippets": [
-    "title-color",
-    "hyphenation-and-justification"
+    "title-color"
   ],
   "theme": "obsidian"
 }

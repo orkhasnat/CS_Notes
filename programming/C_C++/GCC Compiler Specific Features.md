@@ -8,9 +8,14 @@ The way constructors and destructors work is that the shared object file contain
 void __attribute__((constructor)) my_constructor_function(void) {
     // Initialization code executed before main()
 }
+void __attribute__((destructor)) my_destructor_function(void) {
+    // Initialization code executed before main()
+}
 ```
 Additionally, priority levels can be assigned to constructor functions using an integer value inside the double parentheses, ensuring a specific order of execution when multiple constructor functions are present:
 ```c
 void __attribute__((constructor(10))) high_priority(void);
 void __attribute__((constructor(9))) low_priority(void);
+void __attribute__((destructor(10))) high_priority(void);
+void __attribute__((destructor(9))) low_priority(void);
 ```

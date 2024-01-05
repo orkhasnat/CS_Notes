@@ -38,6 +38,7 @@ Table of Contents
 30. [[Every Programmer Should Know#Where To Look For Further Info|Where To Look For Further Info]]
 31. [[Every Programmer Should Know#Coding Practice Sites|Coding Practice Sites]]
 
+---
 ### Introduction
 - [Map of Computer Science](https://www.youtube.com/watch?v=SzJ46YA_RaA)
 - [40 Key Computer Science Concepts Explained In Layman’s Terms](http://carlcheo.com/compsci)
