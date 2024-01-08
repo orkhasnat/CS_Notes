@@ -1,3 +1,6 @@
+## No Tracking VPN drops SSH??
+Apparently, a lazy way to find if the VPN provider is collecting logs or not. is to open a ssh connection and then turning on the VPN connection. If the ssh connection drops that means the VPN provider isn't collecting login data. I saw this in a DEFCON presentation though its from 2012. So not really sure about this. Also I don't know even if the ssh connection drops what does it actually tell about that VPN provider. (to what extent?)
+
 ## Loopback address `127.0.0.1`
 **Loopback Interface (`127.0.0.1`):** This is a *virtual interface* that allows a device to communicate with itself. It's often used for testing and troubleshooting.
 The IP address `127.0.0.1` is the loopback address, commonly referred to as **localhost**. When a web server or any other application is configured to listen on `127.0.0.1`, it means it will ***only accept*** connections ***from the local machine.*** 
