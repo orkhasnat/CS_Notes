@@ -5,6 +5,7 @@
 		A library for JAMStack Themes.
 
 # ASTRO Templates
+- [***AWESOME ASTRO***](https://github.com/one-aalam/awesome-astro)
 - [hello astro](https://astro.build/themes/details/hello-astro/)
 - [astro-pwa-starter](https://astro.build/themes/details/astro-pwa-starter/) 
 - [Landing  page](https://astro.build/themes/details/astro-landing-page/)
