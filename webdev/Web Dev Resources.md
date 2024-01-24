@@ -11,3 +11,7 @@
 - [Landing  page](https://astro.build/themes/details/astro-landing-page/)
 - [Pinwheel](https://astro.build/themes/details/pinwheel/).
  - [AstroWind](https://astro.build/themes/details/astrowind/) 
+
+# CSS UI Components
+- [Tail Blocks](https://tailblocks.cc/)
+- [shadcn](https://ui.shadcn.com/docs/components/button)
