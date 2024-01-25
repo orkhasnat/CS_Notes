@@ -15,3 +15,5 @@
 # CSS UI Components
 - [Tail Blocks](https://tailblocks.cc/)
 - [shadcn](https://ui.shadcn.com/docs/components/button)
+- [Flowbite](https://flowbite.com/)
+- [Daisy UI](https://daisyui.com/)
