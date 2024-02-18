@@ -27,10 +27,10 @@ Extending a class is the first thing that comes to mind when you need to alter a
 
 One of the ways to overcome these caveats is by using _Aggregation_ or _Composition_ instead of _Inheritance_. 
 
-> [!tip]+ Aggregation 
+> [!tip]- [[../Aggregation|Aggregation]]
 > object A contains objects B; B can live without A.  
 
->[!tip]+ Composition 
+>[!tip]- [[../Composition|Composition]]
 >object A consists of objects B; 
 >A manages life cycle of B; B can’t live without A.
 
@@ -52,7 +52,7 @@ We could apply the same approach to other behaviors such as formatting messages 
 ### Real-World Analogy
 Wearing clothes is an example of using decorators. When you’re cold, you wrap yourself in a sweater. If you’re still cold with a sweater, you can wear a jacket on top. If it’s raining, you can put on a raincoat. All of these garments “extend” your basic behavior but aren’t part of you, and you can easily take off any piece of clothing whenever you don’t need it.
 ## Structure
-![[../../Resources/Images/DP/decorator.png]]
+![[../../../Resources/Images/DP/decorator.png]]
 1. The **Component** declares the common interface for both wrappers and wrapped objects.
 2. **Concrete Component** is a class of objects being wrapped. It defines the basic behavior, which can be altered by decorators.
 3. The **Base Decorator** class has a field for referencing a wrapped object. The field’s type should be declared as the component interface so it can contain both concrete components and decorators. The base decorator delegates all operations to the wrapped object.

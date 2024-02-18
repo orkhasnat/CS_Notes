@@ -27,7 +27,7 @@ Say the client wants a factory to produce a chair. The client doesn’t have to 
 
 There’s one more thing left to clarify: if the client is only exposed to the abstract interfaces, what creates the actual factory objects? Usually, the application creates a concrete factory object at the initialization stage. Just before that, the app must select the factory type depending on the configuration or the environment settings.
 ## Structure
-![[../../Resources/Images/DP/abstract-factory.png]]
+![[../../../Resources/Images/DP/abstract-factory.png]]
 1. **Abstract Products** declare interfaces for a set of distinct but related products which make up a product family.
 2. **Concrete Products** are various implementations of abstract products, grouped by variants. Each abstract product (chair/sofa) must be implemented in all given variants (Victorian/Modern).
 3. The **Abstract Factory** interface declares a set of methods for creating each of the abstract products.

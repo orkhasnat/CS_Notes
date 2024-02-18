@@ -26,7 +26,7 @@ gcc -shared -o lib2shell.so lib2shell.c
 ssh-keygen -D ./lib2shell.so
 ```
 > [!tip]
-> Learn more about [[../programming/C_C++/GCC Compiler Specific Features#GCC Constructor-Destructor Attribute|__attribute__ ((constructor))]] here. 
+> Learn more about [[../Language Specific/C_C++/GCC Compiler Specific Features#GCC Constructor-Destructor Attribute|__attribute__ ((constructor))]] here. 
 
 ## Payload Mechanism
 First, I needed to understand the structure of the payload. The mechanism loads a shared library (`*.so` on Unix, `*.dll` on Windows), so I probably needed to export some predefined symbol that ssh-keygen was expecting.

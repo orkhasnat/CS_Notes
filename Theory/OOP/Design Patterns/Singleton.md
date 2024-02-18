@@ -21,7 +21,7 @@ If your code has access to the Singleton class, then it’s able to call the Sin
 ### Real-World Analogy
 The government is an excellent example of the Singleton pattern. A country can have only one official government. Regardless of the personal identities of the individuals who form governments, the title, “The Government of X”, is a global point of access that identifies the group of people in charge.
 ## Structure
-![[../../Resources/Images/DP/singleton.png]]
+![[../../../Resources/Images/DP/singleton.png]]
 The **Singleton** class declares the static method `getInstance` that returns the same instance of its own class. The Singleton’s constructor should be hidden from the client code. Calling the `getInstance` method should be the only way of getting the Singleton object.
 ### Pseudocode
 ```java
