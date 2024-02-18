@@ -1,8 +1,8 @@
 # Factory Method
 Reference: [Refactoring Guru](https://refactoring.guru/design-patterns/factory-method)
+Read More on [Factory Comaprison](https://refactoring.guru/design-patterns/factory-comparison)
 Jump Back to [[_Index_|Index]]
 Jump to [[Factory Method#Code Examples|Code]]
-Read More on [Factory Comaprison](https://refactoring.guru/design-patterns/factory-comparison)
 
 ---
 ## Intent
@@ -144,6 +144,8 @@ class Application is
 - [[Factory Method]] is a specialization of [[Template Method]]. At the same time, a _Factory Method_ may serve as a step in a large _Template Method_.
 
 # Code Examples
+The Factory Method defines a method, which should be used for creating objects instead of using a direct constructor call (`new` operator). Subclasses can override this method to change the class of objects that will be created.
+
 **Complexity:**  🌟 ⭐ ⭐
 **Popularity:** 🌟 🌟  🌟 
 
@@ -259,7 +261,7 @@ Creator: The same creator's code has just worked with {Result of the ConcretePro
 - [`java.net.URLStreamHandlerFactory#createURLStreamHandler(String)`](http://docs.oracle.com/javase/8/docs/api/java/net/URLStreamHandlerFactory.html) (Returns different singleton objects, depending on a protocol)
 - [`java.util.EnumSet#of()`](https://docs.oracle.com/javase/8/docs/api/java/util/EnumSet.html#of(E))
 - [`javax.xml.bind.JAXBContext#createMarshaller()`](https://docs.oracle.com/javase/8/docs/api/javax/xml/bind/JAXBContext.html#createMarshaller--) and other similar methods.
-
+---
 In this example, Buttons play a product role and dialogs act as creators. Different types of dialogs require their own types of elements. That’s why we create a subclass for each dialog type and override their factory methods. Now, each dialog type will instantiate proper button classes. Base dialog works with products using their common interface, that’s why its code remains functional after all changes.
 ##### buttons/Button.java (Common Product Interface)
 ```java
@@ -372,13 +374,13 @@ public class WindowsDialog extends Dialog {
     }
 }
 ```
-##### Demo.java
+##### Client.java 
 ```java
 import factory.Dialog;
 import factory.HtmlDialog;
 import factory.WindowsDialog;
 
-public class Demo {
+public class Client {
     private static Dialog dialog;
 
 	public static void main(String[] args) {
@@ -399,11 +401,13 @@ public class Demo {
     }
 }
 ```
-###### Execution Result
+###### Execution Result (HtmlDialog)
 ```
 <button>Test Button</button>
 Click! Button says - 'Hello World!'
 ```
+###### Execution Result (WindowsDialog)
+>[!tldr] OutputDemo.png -> a Windows Dialog Window.
 ### Python
 ##### factoryMethod.py
 ```python

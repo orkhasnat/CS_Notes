@@ -18,6 +18,8 @@ All implementations of the Singleton have these two steps in common:
 - Create a static creation method that acts as a constructor. Under the hood, this method calls the private constructor to create an object and saves it in a static field. All following calls to this method return the cached object.
 
 If your code has access to the Singleton class, then it’s able to call the Singleton’s static method. So whenever that method is called, the same object is always returned.
+### Real-World Analogy
+The government is an excellent example of the Singleton pattern. A country can have only one official government. Regardless of the personal identities of the individuals who form governments, the title, “The Government of X”, is a global point of access that identifies the group of people in charge.
 ## Structure
 ![[../../Resources/Images/DP/singleton.png]]
 The **Singleton** class declares the static method `getInstance` that returns the same instance of its own class. The Singleton’s constructor should be hidden from the client code. Calling the `getInstance` method should be the only way of getting the Singleton object.
@@ -93,6 +95,10 @@ class Application is
 - [[Abstract Factories]], [[Builders]] and [[Prototypes]] can all be implemented as [[Singleton|Singletons]].
 
 # Code Examples
+Singleton has almost the same pros and cons as global variables. Although they’re super-handy, they break the modularity of your code.
+
+You can’t just use a class that depends on a Singleton in some other context, without carrying over the Singleton to the other context. Most of the time, this limitation comes up during the creation of unit tests.
+
 **Complexity:**  🌟 ⭐ ⭐
 **Popularity:** 🌟 🌟 ⭐
 
@@ -184,7 +190,7 @@ FOO
  - [`java.lang.Runtime#getRuntime()`](http://docs.oracle.com/javase/8/docs/api/java/lang/Runtime.html#getRuntime--)
 - [`java.awt.Desktop#getDesktop()`](http://docs.oracle.com/javase/8/docs/api/java/awt/Desktop.html#getDesktop--)
 - [`java.lang.System#getSecurityManager()`](http://docs.oracle.com/javase/8/docs/api/java/lang/System.html#getSecurityManager--)
-
+---
 It’s pretty easy to implement a sloppy Singleton. You just need to hide the constructor and implement a static creation method.
 #### Singleton.java
 It’s pretty easy to implement a sloppy Singleton. You just need to hide the constructor and implement a static creation method.
@@ -245,9 +251,9 @@ public final class Singleton {
 > }
 > ```
 
-##### DemoSingleThread.java
+##### ClientSingleThread.java
 ```java
-public class DemoSingleThread {
+public class ClientSingleThread {
     public static void main(String[] args) {
         System.out.println("If you see the same value, then singleton was reused (yay!)" + "\n" +
                 "If you see different values, then 2 singletons were created (booo!!)" + "\n\n" +
@@ -269,9 +275,9 @@ RESULT:
 FOO
 FOO
 ```
-##### DemoMultiThread.java
+##### ClientMultiThread.java
 ```java
-public class DemoMultiThread {
+public class ClientMultiThread {
     public static void main(String[] args) {
         System.out.println("If you see the same value, then singleton was reused (yay!)" + "\n" +
                 "If you see different values, then 2 singletons were created (booo!!)" + "\n\n" +
