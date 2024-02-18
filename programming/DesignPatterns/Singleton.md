@@ -22,7 +22,6 @@ If your code has access to the Singleton class, then it’s able to call the Sin
 ![[../../Resources/Images/DP/singleton.png]]
 The **Singleton** class declares the static method `getInstance` that returns the same instance of its own class. The Singleton’s constructor should be hidden from the client code. Calling the `getInstance` method should be the only way of getting the Singleton object.
 ### Pseudocode
-text
 ```java
 // The Database class defines the `getInstance` method that lets clients access the same instance of a database connection throughout the program.
 class Database is
