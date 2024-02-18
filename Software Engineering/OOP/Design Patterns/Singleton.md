@@ -5,9 +5,9 @@ Jump to [[Singleton#Code Examples|Code]]
 
 ---
 ## Intent
-**Singleton** is a [[_Index_#Creational patterns|creational]] design pattern that lets you ensure that a class has only one instance, while providing a global access point to this instance.
+**Singleton** is a [[_Index_#Creational patterns|creational]] design pattern that lets you ensure that a class has only one instance, while providing a single global access point to this instance.
 ### Problem
-The Singleton pattern solves two problems at the same time, violating the _Single Responsibility Principle_:
+The Singleton pattern solves two problems at the same time, violating the [[../S.O.L.I.D Principles#Single Responsibility|Single Responsibility Principle]]:
 1. **Ensure that a class has just a single instance**. Why would anyone want to control how many instances a class has? The most common reason for this is to control access to some shared resource. For example, a database or a file. Here’s how it works: imagine that you created an object, but after a while decided to create a new one. Instead of receiving a fresh object, you’ll get the one you already created. Note that this behavior is impossible to implement with a regular constructor since a constructor call **must** always return a new object by design.
 2. **Provide a global access point to that instance**. Remember those global variables that you used to store some essential objects? While they’re very handy, they’re also very unsafe since any code can potentially overwrite the contents of those variables and crash the app. Just like a global variable, the Singleton pattern lets you access some object from anywhere in the program. However, it also protects that instance from being overwritten by other code. There’s another side to this problem: you don’t want the code that solves problem #1 to be scattered all over your program. It’s much better to have it within one class, especially if the rest of your code already depends on it.
 
@@ -80,7 +80,7 @@ class Application is
 - The singleton object is initialized only when it’s requested for the first time.
 
 #### Cons
-- Violates the _Single Responsibility Principle_. The pattern solves two problems at the time.
+- Violates the [[../S.O.L.I.D Principles#Single Responsibility|Single Responsibility Principle]]. The pattern solves two problems at the time.
 - The Singleton pattern can mask bad design, for instance, when the components of the program know too much about each other.
 - The pattern requires special treatment in a multithreaded environment so that multiple threads won’t create a singleton object several times.
 - It may be difficult to unit test the client code of the Singleton because many test frameworks rely on inheritance when producing mock objects. Since the constructor of the singleton class is private and overriding static methods is impossible in most languages, you will need to think of a creative way to mock the singleton. Or just don’t write the tests. Or don’t use the Singleton pattern.
@@ -92,7 +92,7 @@ class Application is
     
     1. There should be only one Singleton instance, whereas a _Flyweight_ class can have multiple instances with different intrinsic states.
     2. The _Singleton_ object can be mutable. Flyweight objects are immutable.
-- [[Abstract Factories]], [[Builders]] and [[Prototypes]] can all be implemented as [[Singleton|Singletons]].
+- [[Abstract Factory|Abstract Factories]], [[Builder|Builders]] and [[Prototype|Prototypes]] can all be implemented as [[Singleton|Singletons]].
 
 # Code Examples
 Singleton has almost the same pros and cons as global variables. Although they’re super-handy, they break the modularity of your code.

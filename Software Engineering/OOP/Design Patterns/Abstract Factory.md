@@ -136,8 +136,8 @@ class ApplicationConfigurator is
 #### Pros
 - You can be sure that the products you’re getting from a factory are compatible with each other.
 - You avoid tight coupling between concrete products and client code.
-- _Single Responsibility Principle_. You can extract the product creation code into one place, making the code easier to support.
-- _Open/Closed Principle_. You can introduce new variants of products without breaking existing client code.
+- [[../S.O.L.I.D Principles#Single Responsibility|Single Responsibility Principle]]. You can extract the product creation code into one place, making the code easier to support.
+- [[../S.O.L.I.D Principles#Open/closed|Open/Closed Principle]]. You can introduce new variants of products without breaking existing client code.
 #### Cons
 - The code may become more complicated than it should be, since a lot of new interfaces and classes are introduced along with the pattern.
 
@@ -147,7 +147,7 @@ class ApplicationConfigurator is
 - [[Abstract Factory]] classes are often based on a set of [[Factory Method|Factory Methods]], but you can also use [[Prototype|Prototypes]] to compose the methods on these classes.
 - [[Abstract Factory]] can serve as an alternative to [[Facade]] when you only want to hide the way the subsystem objects are created from the client code.
 - You can use [[Abstract Factory]] along with [[Bridge]]. This pairing is useful when some abstractions defined by _Bridge_ can only work with specific implementations. In this case, _Abstract Factory_ can encapsulate these relations and hide the complexity from the client code.
-- [[Abstract Factory|Abstract Factories]], [[Builder|Builders]] and [[Prototype]] can all be implemented as [[Singleton]].
+- [[Abstract Factory|Abstract Factories]], [[Builder|Builders]] and [[Prototype|Prototypes]] can all be implemented as [[Singleton]].
 
 # Code Examples
 Abstract Factory defines an interface for creating all distinct products but leaves the actual product creation to concrete factory classes. Each factory type corresponds to a certain product variety.
@@ -162,11 +162,6 @@ Client code works with factories and products only through their abstract interf
 **Usage examples:** The Abstract Factory pattern is pretty common in code. Many frameworks and libraries use it to provide a way to extend and customize their standard components.
 
 **Identification:** The pattern is easy to recognize by methods, which return a factory object. Then, the factory is used for creating specific sub-components.
-
-This example illustrates the structure of the **Abstract Factory** design pattern. It focuses on answering these questions:
-- What classes does it consist of?
-- What roles do these classes play?
-- In what way the elements of the pattern are related?
 ### C++
 ##### abstractFactory.cc
 ```cpp

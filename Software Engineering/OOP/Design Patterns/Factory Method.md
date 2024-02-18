@@ -6,7 +6,7 @@ Jump to [[Factory Method#Code Examples|Code]]
 
 ---
 ## Intent
-**Factory Method** is a [[_Index_#Creational patterns|creational]] design patternthat provides an interface for creating objects in a superclass, but allows subclasses to alter the type of objects that will be created.
+**Factory Method** is a [[_Index_#Creational patterns|creational]] design pattern that provides an interface for creating objects in a superclass, but allows subclasses to alter the type of objects that will be created. This solves the problem of creating product objects without specifying their concrete classes.
 ### Problem
 Imagine that you’re creating a logistics management application. The first version of your app can only handle transportation by trucks, so the bulk of your code lives inside the `Truck` class.
 After a while, your app becomes pretty popular. Each day you receive dozens of requests from sea transportation companies to incorporate sea logistics into the app.
@@ -130,8 +130,8 @@ class Application is
 
 #### Pros
 - You avoid tight coupling between the creator and the concrete products.
-- _Single Responsibility Principle_. You can move the product creation code into one place in the program, making the code easier to support.
-- _Open/Closed Principle_. You can introduce new types of products into the program without breaking existing client code.
+- [[../S.O.L.I.D Principles#Single Responsibility|Single Responsibility Principle]]. You can move the product creation code into one place in the program, making the code easier to support.
+- [[../S.O.L.I.D Principles#Open/closed|Open/Closed Principle]]. You can introduce new types of products into the program without breaking existing client code.
 
 #### Cons
 - The code may become more complicated since you need to introduce a lot of new subclasses to implement the pattern. The best case scenario is when you’re introducing the pattern into an existing hierarchy of creator classes.
@@ -152,11 +152,6 @@ The Factory Method defines a method, which should be used for creating objects i
 **Usage examples:** The Factory Method pattern is widely used in code. It’s very useful when you need to provide a high level of flexibility for your code.
 
 **Identification:** Factory methods can be recognized by creation methods that construct objects from concrete classes. While concrete classes are used during the object creation, the return type of the factory methods is usually declared as either an abstract class or an interface.
-
-This example illustrates the structure of the **Factory Method** design pattern. It focuses on answering these questions:
-- What classes does it consist of?
-- What roles do these classes play?
-- In what way the elements of the pattern are related?
 ### C++
 ##### factoryMethod.cc
 ```cpp

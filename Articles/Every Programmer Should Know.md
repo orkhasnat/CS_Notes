@@ -135,7 +135,7 @@ Table of Contents
 - [Category Theory in Life](https://www.youtube.com/watch?v=ho7oagHeqNc)
 - [Simple Made Easy](https://www.infoq.com/presentations/Simple-Made-Easy)
 - [Speed In Software Development](https://www.targetprocess.com/articles/speed-in-software-development/)
-- [#NoEstimates](https://www.youtube.com/watch?v=QVBlnCTu9Ms)
+- [NoEstimates](https://www.youtube.com/watch?v=QVBlnCTu9Ms)
 - [The Myth of the Genius Programmer](https://www.youtube.com/watch?v=0SARbwvhupQ&feature=youtu.be)
 - [Making Badass Developers](https://www.youtube.com/watch?v=FKTxC9pl-WM&t=2s)
 - [The Ten Rules of a Zen Programmer](https://www.zenprogrammer.org/en/10-rules-of-a-zen-programmer.html)
