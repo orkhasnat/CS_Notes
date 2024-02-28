@@ -17,3 +17,4 @@
 - [shadcn](https://ui.shadcn.com/docs/components/button)
 - [Flowbite](https://flowbite.com/)
 - [Daisy UI](https://daisyui.com/)
+- [Aceternity UI](https://ui.aceternity.com/components)
