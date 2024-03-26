@@ -1,9 +1,13 @@
 {
   "accentColor": "",
-  "cssTheme": "Sanctum",
-  "baseFontSize": 16,
+  "cssTheme": "AnuPpuccin",
+  "theme": "obsidian",
   "enabledCssSnippets": [
-    "title-color"
+    "extended-colorschemes",
+    "custom"
   ],
-  "theme": "obsidian"
+  "interfaceFontFamily": "Operator Mono",
+  "textFontFamily": "Operator Mono",
+  "monospaceFontFamily": "CaskaydiaCove Nerd Font Mono",
+  "baseFontSize": 16
 }
