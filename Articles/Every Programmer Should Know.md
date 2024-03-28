@@ -1,11 +1,11 @@
 Every Programmer Should Know
 ===
-A collection of (mostly) technical things every software developer should know.
 Source: [Github](https://github.com/mtdvio/every-programmer-should-know)
+A collection of (mostly) technical things every software developer should know.
 
 ---
 Table of Contents
----
+===
 1. [[Every Programmer Should Know#Introduction|Introduction]]
 2. [[Every Programmer Should Know#Falsehoods|Falsehoods]]
 3. [[Every Programmer Should Know#Algorithms|Algorithms]]

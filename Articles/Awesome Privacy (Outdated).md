@@ -1,10 +1,11 @@
 Awesome Privacy (Outdated)
-====
+===
 Source: [Github](https://github.com/Narayana108/awesome-privacy)
 A list of opensource privacy centered software, tools and web sites.
 
 ---
-# Table of Contents
+Table of Contents
+===
 - [[Awesome Privacy (Outdated)#Chat|Chat]]
 - [[Awesome Privacy (Outdated)#Youtube alternatives|Youtube alternatives]]
 - [[Awesome Privacy (Outdated)#Social Media|Social Media]]
