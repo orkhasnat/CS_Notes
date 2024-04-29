@@ -1,5 +1,6 @@
 ***Interactive Lesson for SQL: [SQLBolt](https://sqlbolt.com/)***
 # Table of Contents
+- [[SQL Basics#Absolute Basics|Absolute Basics]]
 
 ---
 # Absolute Basics
@@ -9,6 +10,27 @@ FROM mytable;
 ```
 > [!info] Capitalization
 > As you might have noticed by now, SQL doesn't _require_ you to write the keywords all capitalized, but as a convention, it helps people distinguish SQL keywords from column and tables names, and makes the query easier to read.
+### Aliases
+SQL aliases are used to give a table, or a column in a table, a temporary name. Aliases are often used to make column names more readable. An alias only exists for the duration of that query. **An alias is created with the `AS` keyword.**
+```sql
+SELECT CustomerID AS ID FROM Customers;
+```
+Actually, in most database languages, `AS` is optional
+```sql
+SELECT CustomerID ID FROM Customers;
+```
+### Wildcard  Characters
+
+| Symbol | Description                                                    |
+| ------ | -------------------------------------------------------------- |
+| %      | Represents zero or more characters                             |
+| _      | Represents a single character                                  |
+| []     | Represents any single character within the brackets _*_        |
+| ^      | Represents any character not in the brackets _*_               |
+| -      | Represents any single character within the specified range _*_ |
+| {}     | Represents any escaped character __**__                        |
+_* Not supported in PostgreSQL and MySQL databases._
+__** Supported only in Oracle databases.__
 
 ### `Where` Clause
 ```sql
@@ -63,3 +85,61 @@ LIMIT num_limit OFFSET num_offset;
 ```
 
 # Database Normalization
+Database normalization is useful because it minimizes duplicate data in any single table, and allows for data in the database to grow independently of each other (ie. Types of car engines can grow independent of each type of car). As a trade-off, queries get slightly more complex since they have to be able to find data from different parts of the database, and performance issues can arise when working with many large tables.
+In order to answer questions about an entity that has data spanning multiple tables in a normalized database, we need to learn how to write a query that can combine all that data and pull out exactly the information we need.
+Tables that share information about a single entity need to have a _primary key_ that identifies that entity _uniquely_ across the database. One common primary key type is an auto-incrementing integer (because they are space efficient), but it can also be a string, hashed value, so long as it is unique.
+
+Using the `JOIN` clause in a query, we can combine row data across two separate tables using this unique key.
+
+Here are the different types of the `JOIN` in SQL:
+- `(INNER) JOIN`: Returns records that have matching values in both tables
+- `LEFT (OUTER) JOIN`: Returns all records from the left table, and the matched records from the right table
+- `RIGHT (OUTER) JOIN`: Returns all records from the right table, and the matched records from the left table
+- `FULL (OUTER) JOIN`: Returns all records when there is a match in either left or right table
+### `INNER JOIN`
+The `INNER JOIN` is a process that matches rows from the first table and the second table which have the same key (as defined by the `ON` constraint) to create a result row with the combined columns from both tables. After the tables are joined, the other clauses we learned previously are then applied.
+```sql
+SELECT column, another_table_column, …
+FROM mytable
+INNER JOIN another_table 
+    ON mytable.id = another_table.id
+WHERE condition(s)
+ORDER BY column, … ASC/DESC
+LIMIT num_limit OFFSET num_offset;
+```
+> [!danger] You might see queries where the `INNER JOIN` is written simply as a `JOIN`.
+> These two are equivalent, but we will continue to refer to these joins as inner-joins because they make the query easier to read once you start using other types of joins, which will be introduced in the following lesson.
+### `OUTER JOIN`
+If the two tables have asymmetric data, which can easily happen when data is entered in different stages, then we would have to use a `LEFT JOIN`, `RIGHT JOIN` or `FULL JOIN` instead to ensure that the data you need is not left out of the results.
+```sql
+SELECT column, another_column, …
+FROM mytable
+INNER/LEFT/RIGHT/FULL JOIN another_table 
+    ON mytable.id = another_table.matching_id
+WHERE condition(s)
+ORDER BY column, … ASC/DESC
+LIMIT num_limit OFFSET num_offset;
+```
+#### `NULL` Check
+It's always good to reduce the possibility of `NULL` values in databases because they require special attention when constructing queries, constraints (certain functions behave differently with null values) and when processing the results.
+An alternative to `NULL` values in your database is to have _data-type appropriate default values_, like 0 for numerical data, empty strings for text data, etc. But if your database needs to store incomplete data, then `NULL` values can be appropriate if the default values will skew later analysis (for example, when taking averages of numerical data).
+
+Sometimes, it's also not possible to avoid `NULL` values. In these cases, you can test a column for `NULL` values in a `WHERE` clause by using either the `IS NULL` or `IS NOT NULL` constraint.
+```sql
+SELECT column, another_column, …
+FROM mytable
+WHERE column IS/IS NOT NULL
+AND/OR another_condition
+AND/OR …;
+```
+# Aggregate Functions
+Here are some common aggregate functions:
+
+| Function                                | Description                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **COUNT(*****)**, **COUNT(**column**)** | A common function used to counts the number of rows in the group if no column name is specified. Otherwise, count the number of rows in the group with non-NULL values in the specified column.                                                                                                                                                                                                                                      |
+| **MIN(**column**)**                     | Finds the smallest numerical value in the specified column for all rows in the group.                                                                                                                                                                                                                                                                                                                                                |
+| **MAX(**column**)**                     | Finds the largest numerical value in the specified column for all rows in the group.                                                                                                                                                                                                                                                                                                                                                 |
+| **AVG(**column)                         | Finds the average numerical value in the specified column for all rows in the group.                                                                                                                                                                                                                                                                                                                                                 |
+| **SUM(**column**)**                     | Finds the sum of all numerical values in the specified column for the rows in the group.                                                                                                                                                                                                                                                                                                                                             |
+|                                         | Docs: [MySQL](https://dev.mysql.com/doc/refman/5.6/en/group-by-functions.html "MySQL Aggregate Functions"), [Postgres](http://www.postgresql.org/docs/9.4/static/functions-aggregate.html "Postgres Aggregate Functions"), [SQLite](http://www.sqlite.org/lang_aggfunc.html "SQLite Aggregate Functions"), [Microsoft SQL Server](https://msdn.microsoft.com/en-us/library/ms173454.aspx "Microsoft SQL Server Aggregate Functions") |
