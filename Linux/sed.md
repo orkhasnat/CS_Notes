@@ -1,5 +1,5 @@
-😭😭 when using sed, PLEASE USE -E/-r (extended regex) or all hell breaks loose because of BRE 😭😭
----
+> [!bug] `-E` or `-r` flag for `sed` 😭😭 
+> When using `sed`, PLEASE USE `-E/-r` (extended regex) or all hell breaks loose because of Basic RE 😭😭
 
 # Using different delimiters in sed
 What if, in sed, you have lots of slashes in the pattern and/or replacement?
