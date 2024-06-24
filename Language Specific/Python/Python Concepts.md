@@ -1,16 +1,26 @@
 # Built-In Functions
--  **[[Zip Function in Python|zip function]]**
-
+- **[[Built-Ins in Python#`join()` Function|join function]]**
+- **[[Built-Ins in Python#`map()` Function|map function]]**
+- **[[Built-Ins in Python#`filter()` Function|filter function]]**
+- **[[Built-Ins in Python#`enumerate()` Function|enumerate function]]**
+- **[[Built-Ins in Python#`zip()` Function|zip function]]**
 # Built-In Modules
 - **[[Itertools Module in Python|Itertools]]**
 - **[[Functools Module in Python|Functools]]**
+	- **[[Functools Module in Python#`reduce()` Function|reduce function]]**
+	- **[[Functools Module in Python#`@lru_cache` Decorator|@lru_cache decorator]]**
+	- **[[Functools Module in Python#`@cache` Decorator|@cache decorator]]**
 - **[[Collection Module in Python|Collection]]**
-
 # Misc. Concepts
 - **[[Nested Functions in Python#Closures|Closure]]**
 - **[[Nested Functions in Python#Decorators|Decorators]]**
 	- **[[Nested Functions in Python#Built-In Decorators|Built-In Decorators]]**
+---
 # Syntactical Sugar
+### Slicing
+In python, we can easily slice strings using, `mystring[start:end:step]`.
+> [!info] Reverse using slicing
+> Easiest way to **reverse** a string: `string[::-1]`
 ### Walrus `:=` Operator
 The walrus operator allows you to ==assign a value== to a variable as ==part of an expression==. It is particularly useful in situations where you need to both compute a value and use it in a condition or expression.
 Without the walrus operator:
@@ -38,6 +48,7 @@ while (number := number + 1) < 5:
 - The `kwargs` name is a convention, and you can use any name preceded by double asterisks (`**`).
 - It collects extra keyword arguments as a dictionary.
 - The special syntax `**kwargs` in function definitions in Python is used to pass a key worded, variable-length argument list.
+
 > [!info] Keyword Argument 
 > - A keyword argument is where you provide a name to the variable as you pass it into the function.
 > - One can think of the *kwargs* as being a dictionary that maps each keyword to the value that we pass alongside it. That is why when we iterate over the *kwargs* there doesn’t seem to be any order in which they were printed out.

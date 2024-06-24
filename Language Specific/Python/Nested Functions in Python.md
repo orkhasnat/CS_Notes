@@ -168,6 +168,6 @@ Getter Called
 10
 ```
 ###### `@cache` decorator from `functools`
-Basically `@lru_cache(maxsize=None)` which is also the default for `@lru_cache`.
+Basically `@lru_cache(maxsize=None)` which is also the default for `@lru_cache`. See **[[Functools Module in Python#`@cache` decorator|here]]**.
 ###### `@lru_cache` decorator from `functools`
-See [[Functools Module in Python#`@lru_cache` decorator|here]].
+See **[[Functools Module in Python#`@lru_cache` decorator|here]]**.
