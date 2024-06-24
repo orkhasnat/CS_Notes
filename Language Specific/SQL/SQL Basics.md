@@ -1,6 +1,18 @@
 ***Interactive Lesson for SQL: [SQLBolt](https://sqlbolt.com/)***
 # Table of Contents
 - [[SQL Basics#Absolute Basics|Absolute Basics]]
+	- [[SQL Basics#Aliases|Aliases]]
+	- [[SQL Basics#Wildcard  Characters|Wildcard  Characters]]
+	- [[SQL Basics#`Where` Clause|Where Clause]]
+	- [[SQL Basics#`DISTINCT` keyword|DISTINCT keyword]]
+	- [[SQL Basics#`ORDER BY` keyword|ORDER BY keyword]]
+	- [[SQL Basics#`LIMIT` & `OFFSET` keyword|LIMIT & OFFSET keyword]]
+- [[SQL Basics#Database Normalization|Database Normalization]]
+- [[SQL Basics#Joins|Joins]]
+	- [[SQL Basics#`INNER JOIN`|INNER JOIN]]
+	- [[SQL Basics#`OUTER JOIN`|OUTER JOIN]]
+- [[SQL Basics#`NULL` Check|NULL Check]]
+- [[SQL Basics#Aggregate Functions|Aggregate Functions]]
 
 ---
 # Absolute Basics
@@ -88,7 +100,7 @@ LIMIT num_limit OFFSET num_offset;
 Database normalization is useful because it minimizes duplicate data in any single table, and allows for data in the database to grow independently of each other (ie. Types of car engines can grow independent of each type of car). As a trade-off, queries get slightly more complex since they have to be able to find data from different parts of the database, and performance issues can arise when working with many large tables.
 In order to answer questions about an entity that has data spanning multiple tables in a normalized database, we need to learn how to write a query that can combine all that data and pull out exactly the information we need.
 Tables that share information about a single entity need to have a _primary key_ that identifies that entity _uniquely_ across the database. One common primary key type is an auto-incrementing integer (because they are space efficient), but it can also be a string, hashed value, so long as it is unique.
-
+# Joins
 Using the `JOIN` clause in a query, we can combine row data across two separate tables using this unique key.
 
 Here are the different types of the `JOIN` in SQL:
@@ -120,7 +132,7 @@ WHERE condition(s)
 ORDER BY column, … ASC/DESC
 LIMIT num_limit OFFSET num_offset;
 ```
-#### `NULL` Check
+# `NULL` Check
 It's always good to reduce the possibility of `NULL` values in databases because they require special attention when constructing queries, constraints (certain functions behave differently with null values) and when processing the results.
 An alternative to `NULL` values in your database is to have _data-type appropriate default values_, like 0 for numerical data, empty strings for text data, etc. But if your database needs to store incomplete data, then `NULL` values can be appropriate if the default values will skew later analysis (for example, when taking averages of numerical data).
 
