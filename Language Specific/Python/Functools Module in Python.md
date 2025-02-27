@@ -1,5 +1,5 @@
 # `@lru_cache` Decorator
-The `functools` module provides the `lru_cache` decorator, which stands for "Least Recently Used Cache." This decorator is used to cache the results of a function, saving time by avoiding redundant computations for previously seen arguments. Additionally, it helps manage the cache size, discarding the least recently used entries when the cache reaches a specified limit.
+The `functools` module provides the `lru_cache` [[Nested Functions in Python#Decorators|decorator]], which stands for "Least Recently Used Cache." This decorator is used to cache the results of a function, saving time by avoiding redundant computations for previously seen arguments. Additionally, it helps manage the cache size, discarding the least recently used entries when the cache reaches a specified limit.
 ```python
 from functools import lru_cache
 
@@ -12,7 +12,7 @@ def fib(n):
 print(fib(10))
 ```
 # `@cache` Decorator
-The `maxsize` parameter of `lru_cache` controls the maximum number of items stored in the cache. If set to `None` (the default), the cache can grow without bounds, essentially working as `@cache` decorator. Otherwise, the cache will discard the least recently used items when it reaches the specified size.
+The `maxsize` parameter of `lru_cache` controls the maximum number of items stored in the cache. If set to `None` (the default), the cache can grow without bounds, essentially working as `@cache` [[Nested Functions in Python#Decorators|decorator]]. Otherwise, the cache will discard the least recently used items when it reaches the specified size.
 
 # `reduce()` Function
 The `reduce()` function in Python applies a rolling computation to sequential pairs of values from an iterable, reducing it to a single value.
